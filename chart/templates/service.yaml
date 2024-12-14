@@ -6,7 +6,7 @@ spec:
   type: {{ .Values.service.type }}
   selector:
     appName: {{ .Values.component }}
-    projectName: {{{ .Chart.Name }}
+    projectName: {{ .Chart.Name }}
   ports:
     - name: http
       protocol: TCP
