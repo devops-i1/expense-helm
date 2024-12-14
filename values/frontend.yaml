@@ -1,0 +1,9 @@
+initContainers:
+  enabled: false
+component: frontend
+appVersion: 2.0.1
+
+service:
+  type: LoadBalancer
+  port: 80
+  targetPort: 80
