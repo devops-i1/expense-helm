@@ -15,7 +15,7 @@ if [ "$1" == "jobs" ]; then
   argocd login $(kubectl get svc -n argocd argocd-server | awk '{print $4}' | tail -1) --username admin --password $(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo) --insecure --grpc-web
 
   for app in backend frontend ; do
-     argocd app create ${app}  --repo https://github.com/devops-i1/expense-helm --path chart --dest-namespace default --dest-server https://kubernetes.default.svc --grpc-web --values values/${app}.yaml
+     argocd app create ${app}  --repo https://github.com/devops-i1/expense-helm --path chart --dest-namespace default --dest-server https://kubernetes.default.svc --grpc-web --values ../values/${app}.yaml
   done
 
 fi
