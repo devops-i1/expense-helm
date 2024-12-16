@@ -7,7 +7,8 @@ if [ "$1" == "install" ]; then
 
     echo URL - https://$(kubectl get svc -n argocd argocd-server | awk '{print $4}' | tail -1)
     echo Username - admin
-    echo Password - $(argocd admin initial-password -n argocd | head -1)
+    echo Password - $(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d; echo
+ | head -1)
 
 fi
 
