@@ -17,4 +17,5 @@ if [ "$1" == "jobs" ]; then
   for app in backend frontend ; do
      argocd app create ${app}  --repo https://github.com/devops-i1/expense-helm --path chart --dest-namespace default --dest-server https://kubernetes.default.svc --grpc-web --values values/${app}.yaml
   done
+
 fi
